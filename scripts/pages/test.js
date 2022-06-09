@@ -5,8 +5,8 @@ class apiUser {
     async getPhotographers() {
         const response = await fetch("./data/photographers.json");
         const json = await response.json();
-        console.log("sortie")
-        console.log(json)
+        // console.log("sortie")
+        // console.log(json)
         return json;
 
     }

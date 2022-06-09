@@ -7,13 +7,15 @@ class Welcome {
     }
     async menu() {
         this.users = await this.apiUser.getPhotographers();
-        this.photographers = this.users;
-        this.displayData()
+
+        this.displayData(this.users)
     }
 
-    displayData() {
+    displayData(users) {
         this.photographersSection.innerHTML = "";
-        this.photographers.forEach(user => {
+        console.log('displayData users', users)
+
+        users.photographers.forEach(user => {
             const photograph = new photographerFactory(user)
             this.photographersSection.appendChild(photograph.getUserCardDOM())
     })
