@@ -1,27 +1,84 @@
+const recupUrl = window.location.search;
+console.log(window.location.search);
+
+
 function photographerHeader(data) {
+    // const idPhotographer = recupUrl.get("id");
+   
+   
     const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/portrait/${portrait}`;
-    function getUserCardDOM() {
-        const presentation = document.createElement('div');
-        presentation.className = "photographer_presentation";
-        
-      
-            const templateProfil = ` 
-                  <div class="presentation_photograph">
-                      <h1 class="presentation_photograph_name" id="namePhotographer">${name}</h1>
-                      <p class="presentation_photograph_location">${city}, ${country}</p>
-                      <p class="presentation_photograph_description">${tagline}</p>
-                  </div>
-                  <a><img class="presentation_photograph_picture" src="${picture}" alt="Portrait de ${name}"></a>`;
-            presentation.innerHTML = templateProfil;
-            
 
-return presentation; ;
-  }
-  return { getUserCardDOM };
+    function getUserCardDOM() {
+        let presentation = document.createElement('div');
+        let article = document.createElement('article');
+        const h1 = document.createElement('h1');
+        const pays = document.createElement('p');
+        const tag = document.createElement('p');
+        const blocPrix = document.createElement('div');
+        const prix = document.createElement('p')
+        const img = document.createElement('img');
+
+        img.setAttribute('src', picture);
+        img.setAttribute('alt', `Aperçu profil de ${name}`);
+
+        presentation.className = "presentation_photograph";
+        article.className = "presentation_card";
+        h1.className = "presentation_name";
+        pays.className = "presentation_location";
+        tag.className = "presentation_description";
+        blocPrix.className = "presentation_blocPrix";
+        prix.className = "presentation_price";
+        img.className = "presentation_photo";
+
+        h1.textContent = name;
+        pays.innerHTML = country + ", " + city;
+        tag.innerHTML = tagline;
+        prix.innerHTML = price + '€/par heure';
+
+        presentation.appendChild(article);
+        article.appendChild(h1);
+        article.appendChild(pays);
+        article.appendChild(tag);
+        presentation.appendChild(img);
+        presentation.appendChild(blocPrix);
+        blocPrix.appendChild(prix);
+
+        return presentation;
+    }
+    return { name, picture, city, country, id, tagline, price, getUserCardDOM };
 }
 
 
+
+//         presentation.className = "photographer_presentation";
+        
+      
+//             const templateProfil = ` 
+//                   <div class="presentation_photograph">
+//                       <h1 class="presentation_photograph_name" id="namePhotographer">${name}</h1>
+//                       <p class="presentation_photograph_location">${city}, ${country}</p>
+//                       <p class="presentation_photograph_description">${tagline}</p>
+//                       <p class="presentation_photograph_price">${price}€/par heure</p>
+//                   </div>
+//                   <a><img class="presentation_photo" src="${picture}" alt="Portrait de ${name}"></a>`;
+//             presentation.innerHTML = templateProfil;
+            
+
+// return article; ;
+//   }
+//   return { getUserCardDOM };
+// }
+
+    // <div class="photograph-header"> 
+    //     <article class="presentation_photograph">
+    //         <h1 class="presentation_name" id="namePhotographer">${name}</h1>
+    //         <p class="presentation_location">${city}, ${country}</p>
+    //         <p class="presentation_description">${tagline}</p>
+    //         <p class="presentation_price">${price}€/par heure</p>
+    //     </article>    
+
+    // </div>
 
 
 

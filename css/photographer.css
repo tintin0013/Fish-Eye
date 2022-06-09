@@ -75,9 +75,28 @@ form input {
     border-radius: 5px;
 }
 
-.photograph-presentation {
+.presentation_photograph {
     width: 100%;
+    height: auto;
+    display: flex;
+   
 
+}
+
+.contact_button {
+    position: relative;
+    top: 100px;
+    left: 50%;
+    
+}
+
+.presentation_card{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .photograph-photos {
@@ -92,22 +111,45 @@ form input {
 .photograph-header {
     width: 100%;
     display: flex;
+    flex-direction: column;
+   
   }
-
-  .presentation_photograph_picture{
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
+.presentation_name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #D3573C;
+    margin: 0;
+   
 }
+  
 
-.presentation_photograph_location {
+.presentation_location {
     margin-top: 5px;
     margin-bottom: 0px;
     color: #901C1C;
 }
 
-.presentation_photograph_description{
+.presentation_description{
     margin-top: 5px;
     margin-bottom: 0px;
     font-size: 14px;
+}
+
+.presentation_blocPrix{
+   padding-left: 20px;
+    padding-right: 20px;
+    
+    font-size: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    background-color:#D98676 ;
+}
+
+.presentation_photo{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    position: relative;
+    right: -300px;
 }

@@ -42,7 +42,9 @@ h1 {
 
 a.photographer_link {
     text-decoration: none;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .photographer_section article h2 {
@@ -51,7 +53,7 @@ a.photographer_link {
     margin-bottom: 0px;
     
 }
-.photographer_villePays {
+.photographer_country {
     margin-top: 5px;
     margin-bottom: 0px;
     color: #901C1C;
@@ -61,7 +63,7 @@ a.photographer_link {
     margin-bottom: 0px;
     font-size: 14px;
 }
-.photographer_prix{
+.photographer_price{
     margin-top: 5px;
     color: #525252;
     font-size: 13px;
