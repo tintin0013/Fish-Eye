@@ -1,89 +1,23 @@
-// Penser à remplacer par les données récupérées dans le json
+class Photographers {
 
+    constructor() {
 
-async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section");
-   // console.log(photographers   );
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-       // console.log(photographerModel);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-    });
-};
+        this.photographersSection = document.querySelector(".photographer_section");
+        this.apiUser = new apiUser('./data/photographers.json')
+    }
+    async menu() {
+        this.users = await this.apiUser.getPhotographers();
+        this.displayData(this.users)
+    }
 
-async function init() {
-    const response = await fetch('./data/photographers.json')
-    const json = await response.json()
-    displayData(json.photographers)
-    console.log(json.photographers)
+    displayData(users) {
+        this.photographersSection.innerHTML = "";
+        users.photographers.forEach(user => {
+            const photograph = new photographerFactory(user)
+            this.photographersSection.appendChild(photograph.getUserCardDOM())
+    })
 }
-init()
+}
+const photographers = new Photographers()
+photographers.menu()
 
-
-
-
-
-
-
-
-
-
-
-
-
-// let date = new photographClass().getPhotographers()
-//     console.log(data)
-
-// displayData(new photographClass().getPhotographers().photographers);
-
-
-
-// async function init() {
-//     // Récupère les datas des photographes
-//     fetch('./data/photographers.json')
-//     .then(response => {
-//         return response.json();
-//     })
-//     .then(myData => {
-//         displayData(myData.photographers);
-//     })
-// };
-// init();
-
-
-
-
-
-
-
-
-
-    // async function getPhotographers() {
-        
-    //     const response = await fetch('./data/photographers.json',{
-    //         method: 'GET'
-    //     })
-    //     .then(response =>response.text())
-    //     let json = JSON.parse(response);
-    //     return json
-    //     }
-     
-    // async function displayData(photographers) {
-    //     const photographersSection = document.querySelector(".photographer_section");
-    //    // console.log(photographers   );
-    //     photographers.forEach((photographer) => {
-    //         const photographerModel = photographerFactory(photographer);
-    //        // console.log(photographerModel);
-    //         const userCardDOM = photographerModel.getUserCardDOM();
-    //         photographersSection.appendChild(userCardDOM);
-    //     });
-    // };
-
-    // async function init() {
-    //     // Récupère les datas des photographes
-    //     const  photographers  = await getPhotographers()
-    //     displayData(photographers.photographers);
-    // };
-    // // console.log(init());
-    // init();
