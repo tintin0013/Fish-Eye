@@ -14,8 +14,10 @@
     <main id="main">
       <div class="photograph-header">
         <div class="photographer_info">
-
         </div>
+      </div>
+      <div class="photographer_media">
+
       </div>
     </main>
     <div id="contact_modal">
@@ -25,10 +27,20 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+					<div class="div_form">
+            <label id="first">Prénom</label>
+            <input type="search" id="first" name="first"/>
+
+            <label id="last">Nom</label>
+            <input type="search" id="last" name="last"/>
+
+            <label id="email">Email</label>
+            <input type="email" id="email" name="email"/>
+
+            <label id="user-text">Votre message</label>
+            <input type="search" id="user-text" name="user-text"/>
+
+          </div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>

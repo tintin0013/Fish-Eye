@@ -10,7 +10,7 @@ function infoFactory(data) {
     const picture = `assets/photographers/portrait/${portrait}`;
 
     function getPhotographerCardDOM() {
-        const photographerSection = document.querySelector(".photographer_info");
+       
         const article = document.createElement('article');
         const presentation = document.createElement('div');
         const btnForm = document.createElement('button');
@@ -43,10 +43,10 @@ function infoFactory(data) {
         article.appendChild(presentation);
         article.appendChild(btnForm)
         article.appendChild(img);
-        photographerSection.appendChild(article);
+        // photographerSection.appendChild(article);
         
 
-        return presentation;
+        return presentation, article;
     }
     return { name, picture, city, country, id, tagline, price, getPhotographerCardDOM };
 }
@@ -56,21 +56,86 @@ function infoFactory(data) {
 
 
     function mediaFactory(medias) {
-        const {video, image} =medias;
-
-        const imgMedia = `assets/images/${image}`;
-        const videoMedia = `assets/videos/${video}`;
+        // const tableauMedia = [];
+        // medias.forEach(media => {
+        //     let {video, image} = media;
+        //     tableauMedia.push(video, image);
+        // });
+        // console.log(tableauMedia);
+        // const imgMedia = `assets/images/${image}`;
+        // const videoMedia = `assets/videos/${video}`;
+      
 
         function getMediaCardDOM() {
-
-            const mediaArticle = document.createElement('article');
+            const api = new apiUser('./data/photographers.json');
+            const mediaDiv = document.createElement("div");
             
-            const mediaImg = document.createElement('img');
-            const mediaVideo = document.createElement('video');
 
+            const img = document.createElement("img");
+            const video = document.createElement("video");
+            const likes = document.createElement("p");
+            const title = document.createElement("p");
+
+            mediaDiv.className = "media_card";
+           
+            img.className = "media_img";
+            video.className = "media_video";
+            likes.className = "media_likes";
+            title.className = "media_title";
+
+            
+
+            medias.forEach(async (media) => {
+                const detailArticle = document.createElement("article");
+                detailArticle.className = "media_detail";
+                let currentPhotographer = await api.getPhotographerById(media.photographerId)
+                let photographerFirstName = currentPhotographer.name.split(" ")[0];
+                console.log(photographerFirstName);
+
+                // media.image ou media.video
+                if (media.image !== undefined) {
+                    console.log("DANS LA PHOTO");
+                    //   img.setAttribute("src", "assets/images/" + media.image);
+                    img.setAttribute("src", "assets/photographers/medias/"+ photographerFirstName + "/" + media.image);
+                    // img.setAttribute('alt', `Aperçu de ${title}`);
+                    detailArticle.appendChild(img.cloneNode(true));
+                } else {
+                    console.log("DANS LA VIDEO");
+                    video.setAttribute("src", "assets/photographers/medias/"+ photographerFirstName + "/" + media.video);
+                    // video.setAttribute('alt', `Aperçu de ${title}`);
+                    video.setAttribute("controls", "controls");
+                    detailArticle.appendChild(video.cloneNode(true));
+                }
+
+                // media.title
+                title.innerHTML = media.title;
+                console.log(media.title);
+                detailArticle.appendChild(title.cloneNode(true));
+
+                // media.likes
+                likes.innerHTML = media.likes;
+                console.log(media.likes);
+                detailArticle.appendChild(likes.cloneNode(true));
+                
+
+
+                mediaDiv.appendChild(detailArticle);
+            });
+
+
+            // if(image) {
+
+            // }
+            // else{
+            //     video.setAttribute('src', videoMedia);
+            //     video.setAttribute('controls', 'controls');
+            //     mediaArticle.appendChild(video);
+
+            // }
+            return mediaDiv;
         }
-
-    }
+    return {/*video, image, */getMediaCardDOM };
+}
 
 
 

@@ -2,26 +2,50 @@
 
 class PhotographerInfo {
     constructor() {
-        this.photographerInfo = document.querySelectorAll(".photographer_header");
+      this.photographerInfo = document.querySelector(".photographer_info");
+      // console.log("banane",this.photographerInfo);
 
-        console.log(this.photographerInfo)
+        this.photographerSections = document.querySelector(".photograph-header");
+        // console.log("detail",this.photographerSections);
+
+        this.photographerMedia = document.querySelector(".photographer_media");
+        // console.log("media", this.photographerMedia);
+
         const photographerId = new URLSearchParams(window.location.search)
         this.id = photographerId.get("id")
-        this.apiUser = new apiUser('./data/photographers.json')
+        this.apiUser = new apiUser('./data/photographers.json');
     }
     async menu() {
         this.photographer = await this.apiUser.getPhotographerById(this.id)
+        this.media = await this.apiUser.getMediaById(this.id)
+       
 
-        console.log(this.photographer)
-        this.photographerInfo.innerHTML = "";
+        console.log("result.photographer",this.photographer)
         const info = new infoFactory(this.photographer)
-        this.photographerInfo.appendChild(info.getPhotographerCardDOM())
+        const detail = info.getPhotographerCardDOM()
+        console.log("result.detail", detail)
+        this.photographerInfo.appendChild(detail)
+
+        console.log("titi")
+
+        
+
+        console.log("result.media", this.media)
+
+        const media = new mediaFactory(this.media) 
+        const mediaDetail = media.getMediaCardDOM()
+
+        console.log("result.media", mediaDetail)
+
+         this.photographerMedia.appendChild(mediaDetail)
+
+        
 
     }
     
 }
-const photographerInfo = new PhotographerInfo()
-photographerInfo.menu()
+const photographerSections = new PhotographerInfo()
+photographerSections.menu()
 
 
        

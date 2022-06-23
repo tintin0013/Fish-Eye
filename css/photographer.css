@@ -1,5 +1,9 @@
 #contact_modal {
     display: none;
+    position: fixed;
+  top: 50px;
+  left: 25%;
+  width: 70%;
 }
 
 .photograph-header {
@@ -22,6 +26,8 @@
     cursor: pointer;
 }
 
+
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -41,10 +47,13 @@
 
 .modal header img {
     cursor: pointer;
+    position: absolute;
+  top: 2%;
+  right: 22%;
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 50px;
     font-weight: normal;
     text-align: center;
 }
@@ -165,4 +174,47 @@ form input {
     
     
    
+}
+
+.photographer_media{
+    width: 100%;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.media_img{
+    width : 300px ;
+    height : 250px ;
+
+}
+
+.media_video{
+    width : 300px ;
+    height : 250px ;
+
+}
+.media_card{
+   width: 100%;
+  
+   display: flex;
+   flex-wrap: wrap; 
+    justify-content: space-around;
+}
+
+
+.media_detail{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+p.media_title {
+    margin: 0;
+    color: #901C1C ;
+}
+
+p.media_likes {
+  position: relative;
+  right: -280px;
+    top: -30px;
 }
