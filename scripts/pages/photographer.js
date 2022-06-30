@@ -11,8 +11,16 @@ class PhotographerInfo {
         this.photographerMedia = document.querySelector(".photographer_media");
         // console.log("media", this.photographerMedia);
 
+        this.lightboxMedia = document.querySelector(".lightbox_media");
+
+        // this.lightboxMedia = document.getElementById("lightbox");
+        // console.log("lightbox", this.lightboxMedia);
+
+
+
         const photographerId = new URLSearchParams(window.location.search)
         this.id = photographerId.get("id")
+        console.log("id", this.id)
         this.apiUser = new apiUser('./data/photographers.json');
     }
     async menu() {
@@ -20,26 +28,28 @@ class PhotographerInfo {
         this.media = await this.apiUser.getMediaById(this.id)
        
 
-        console.log("result.photographer",this.photographer)
+        // console.log("result.photographer",this.photographer)
         const info = new infoFactory(this.photographer)
         const detail = info.getPhotographerCardDOM()
-        console.log("result.detail", detail)
+        // console.log("result.detail", detail)
         this.photographerInfo.appendChild(detail)
 
-        console.log("titi")
 
-        
-
-        console.log("result.media", this.media)
-
+        // console.log("titi")
+        // console.log("result.media", this.media)
         const media = new mediaFactory(this.media) 
         const mediaDetail = media.getMediaCardDOM()
+        // console.log("result.media", mediaDetail)
+        this.photographerMedia.appendChild(mediaDetail)
 
-        console.log("result.media", mediaDetail)
 
-         this.photographerMedia.appendChild(mediaDetail)
+        const mediaLightbox = new lightboxFactory(this.media, this.photographer)
+        const mediaLightboxDetail = mediaLightbox.getLightboxDOM()
+        // console.log("result.media", mediaLightboxDetail)
+        this.lightboxMedia.appendChild(mediaLightboxDetail)
 
-        
+
+         
 
     }
     

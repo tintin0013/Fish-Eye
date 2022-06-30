@@ -12,9 +12,9 @@ function photographerFactory(data) {
         const tag = document.createElement('p');
         const prix = document.createElement('p')
 
-        link.setAttribute('href', linkTo);
-        img.setAttribute("src", picture);
-        img.setAttribute('alt', `Aperçu profil de ${name}`);
+        link.href = linkTo;
+        img.src =  picture;
+        img.alt = `Aperçu profil de ${name}`;
         
         article.className = "photographer_card";
         link.className = "photographer_link";

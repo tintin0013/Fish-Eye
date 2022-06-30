@@ -1,7 +1,5 @@
 class apiUser {
 
-   
-
     async getPhotographers() {
         const response = await fetch("./data/photographers.json");
         const json = await response.json();

@@ -16,12 +16,13 @@ header {
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
+    margin-right: 4rem;
+    margin-left: 4rem;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    height: 2rem;
+    margin-left: 4rem;
 }
 
 .photographer_section {
@@ -72,4 +73,5 @@ a.photographer_link {
     height: 200px;
     width: 200px;
     border-radius: 100px;
+    object-fit: cover;
 }
