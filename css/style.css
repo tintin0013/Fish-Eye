@@ -5,7 +5,6 @@ body {
     margin: 0;
 }
 
-
 header {
     display: flex;
     flex-direction: row;
@@ -40,7 +39,6 @@ h1 {
     flex-direction: column;
 }
 
-
 a.photographer_link {
     text-decoration: none;
     display: flex;
@@ -52,23 +50,26 @@ a.photographer_link {
     color: #D3573C;
     font-size: 36px;
     margin-bottom: 0px;
-    
 }
+
 .photographer_country {
     margin-top: 5px;
     margin-bottom: 0px;
     color: #901C1C;
 }
+
 .photographer_tag{
     margin-top: 5px;
     margin-bottom: 0px;
     font-size: 14px;
 }
+
 .photographer_price{
     margin-top: 5px;
     color: #525252;
     font-size: 13px;
 }
+
 .photographer_photo{
     height: 200px;
     width: 200px;

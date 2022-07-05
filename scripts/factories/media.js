@@ -1,8 +1,6 @@
-// const recupUrl = window.location.search;
-// console.log(window.location.search);
-var nom 
-function infoFactory(data) {
-	// const idPhotographer = recupUrl.get("id");
+
+ 
+function infoFactory(data) { 
   
 	const { name, id, city, country, tagline, price, portrait } = data;
 	const picture = `assets/photographers/portrait/${portrait}`;
@@ -15,13 +13,14 @@ function infoFactory(data) {
 	  const pays = document.createElement("p");
 	  const tag = document.createElement("p");
 	  const img = document.createElement("img");
-  
-	  btnForm.onclick = displayModal;
+
+	btnForm.addEventListener("click", () => {
+		
+	  displayModal(name);	
+	 
+	});
 	  img.src = picture;
 	  img.alt = `Aperçu profil de ${name}`;
-
-	  nom = name
-	  console.log("nom", nom);
   
 	  presentation.className = "presentation_photograph";
 	  article.className = "presentation_card";
@@ -42,7 +41,6 @@ function infoFactory(data) {
 	  article.appendChild(presentation);
 	  article.appendChild(btnForm);
 	  article.appendChild(img);
-	  // photographerSection.appendChild(article);
   
 	  return presentation, article;
 	}
@@ -57,27 +55,18 @@ function infoFactory(data) {
 	  getPhotographerCardDOM,
 	};
   }
- 
-  console.log("nom", nom);
-  let banane 
   
   function mediaFactory(medias) {
-	// const tableauMedia = [];
-	// medias.forEach(media => {
-	//     let {video, image} = media;
-	//     tableauMedia.push(video, image);
-	// });
-	// console.log(tableauMedia);
-	// const imgMedia = `assets/images/${image}`;
-	// const videoMedia = `assets/videos/${video}`;
+
   
 	function getMediaCardDOM() {
 	  const api = new apiUser("./data/photographers.json");
 	  const mediaDiv = document.createElement("div");
-  
+	  const likesAndTitles = document.createElement("div");
 	  const likes = document.createElement("p");
 	  const title = document.createElement("p");
-  
+	  
+	  likesAndTitles.className = "likes_titles";
 	  mediaDiv.className = "media_card";
 	  likes.className = "media_likes";
 	  title.className = "media_title";
@@ -89,144 +78,50 @@ function infoFactory(data) {
 		  media.photographerId
 		);
 		let photographerFirstName = currentPhotographer.name.split(" ")[0];
-  
-		banane = media.id;
-		console.log(banane);
-		// console.log(photographerFirstName);
-  
 		// media.image ou media.video
 		if (media.image !== undefined) {
 		  const img = document.createElement("img");
-		  img.className = "media_img";
-		  // console.log("DANS LA PHOTO");
-		  //   img.setAttribute("src", "assets/images/" + media.image);
-		  img.src = `assets/photographers/medias/${photographerFirstName}/${media.image}`;
-		  img.setAttribute("data-toto", media.id);
-		  // img.setAttribute("data-tata", media.title);
-		  // img.setAttribute("data-titi", media.likes);
-		  // console.log("toto", img.dataset.toto);
-		  // console.log("tata",img.dataset.tata)
-		  // console.log("titi",img.dataset.titi)
-		  // img.setAttribute('alt', `Aperçu de ${title}`);
-		  // img.addEventListener("click", displayLightbox(media));
-		  img.alt = `Aperçu de ${media.title}`;
-		//   img.href = mediaLink;
-		  // console.log("img", mediaLink);
-  
-		  detailArticle.appendChild(img.cloneNode(true));
-		} else {
-		  const video = document.createElement("video");
-		  video.className = "media_video";
-		  // console.log("DANS LA VIDEO");
-		  video.src = `assets/photographers/medias/${photographerFirstName}/${media.video}`;
-		  // video.setAttribute('alt', `Aperçu de ${title}`);
-		  video.alt = `Aperçu de ${media.title}`;
-		  // video.href = mediaLink;
-		  // console.log("video", mediaLink);
-  
-		  // console.log(media.title)
-		  video.controls = true;
-		  detailArticle.appendChild(video.cloneNode(true));
+		  img.className = "media_galerie";
+		  let urlMedia = `assets/photographers/medias/${photographerFirstName}/${media.image}`;
+		  img.src = urlMedia
+		  img.setAttribute("data-typemedia", "image");
+		  img.alt = `Image de ${media.title}`;
+		  title.innerHTML = media.title;
+		likes.innerHTML = `${media.likes} <i class="far fa-heart"></i>`;
+		likesAndTitles.appendChild(title);
+		likesAndTitles.appendChild(likes);
+		detailArticle.appendChild(img.cloneNode(true));
+		detailArticle.appendChild(likesAndTitles.cloneNode(true));
 		}
-		//   console.log("dehors", mediaLink);
-  
-		// media.title
-		title.innerHTML = media.title;
-		// console.log(media.title);
-		detailArticle.appendChild(title.cloneNode(true));
-  
-		// media.likes
-		likes.innerHTML = media.likes;
-		// console.log(media.likes);
-		detailArticle.appendChild(likes.cloneNode(true));
-  
+		 else {
+		  const video = document.createElement("video");
+		  video.className = "media_galerie";
+		  let urlMediaVideo = `assets/photographers/medias/${photographerFirstName}/${media.video}`;
+		  video.src = urlMediaVideo
+		  video.setAttribute("data-typemedia", "video");
+		  video.alt = `Video de ${media.title}`;
+		  title.innerHTML = media.title;
+		  likes.innerHTML = `${media.likes} <i class="far fa-heart"></i>`;
+		  likesAndTitles.appendChild(title);
+		likesAndTitles.appendChild(likes);
+		detailArticle.appendChild(video.cloneNode(true));
+		detailArticle.appendChild(likesAndTitles.cloneNode(true));
+		}
 		mediaDiv.appendChild(detailArticle);
-  
-		// detailArticle.setAttribute("data-id", media.id);
-		detailArticle.addEventListener("click", displayLightbox);
-		//   detailArticle.onclick = displayLightbox;
+
+		detailArticle.addEventListener("click", (event) => {
+			 console.log("target",event.target)
+			displayLightbox(media, event.target.dataset.typemedia , medias, photographerFirstName);
+		} );
 		detailArticle.setAttribute("data-id", media.id);
-  
-	
-		// console.log("dedans",mediaLink)
-		//   lightbox.appendChild(mediaLink);
-		// console.log("id media",detailArticle.dataset.id);
 	  });
 	 
-	//   console.log(media.id);
+	
 	  return mediaDiv;
 	}
-	return { /*video, image, */ getMediaCardDOM };
+	return { getMediaCardDOM };
   }
-//   mediaFactory();
-  console.log("banane", banane);
 
+ 
 
-
-
-
-
-  
-  function lightboxFactory(medias, photographer) {
-	function getLightboxDOM() {
-	  console.log(medias);
-	  let photographerFirstName = photographer.name.split(" ")[0];
-	//   console.log(photographerFirstName);
-
-	  let currentMedia = medias[2];
-console.log(`assets/photographers/medias/${photographerFirstName}/${currentMedia.image}`)
-
-	  const api = new apiUser("./data/photographers.json");
-	  const lightbox = document.createElement("div");
-	  const chevronLeft = document.createElement("div");
-	  const iconeLeft = document.createElement("i");
-	  const chevronRight = document.createElement("div");
-	  const iconeRight = document.createElement("i");
-	  const close = document.createElement("div");
-	  const closeImg = document.createElement("img");
-	  const detailMedia = document.createElement("div");
-	  const mediaTitle = document.createElement("h1");
-	  const mediaImg = document.createElement("img");
-	  const mediaVideo = document.createElement("video");
-  
-	  mediaTitle.hinnerHTML = "Titre";
-  
-	  // lightbox.style.display = "none";
-  
-	  lightbox.className = "lightbox_content";
-	  chevronLeft.className = "chevron_left";
-	  iconeLeft.className = "fas fa-chevron-left chevron";
-	  chevronRight.className = "chevron_right";
-	  iconeRight.className = "fas fa-chevron-right chevron";
-	  close.className = "close";
-	  closeImg.className = "close_img";
-	  detailMedia.className = "lightbox_detail";
-	  mediaTitle.className = "lightbox_title";
-	  mediaImg.className = "lightbox_img";
-	  mediaVideo.className = "lightbox_video";
-  
-	  closeImg.src = "assets/icons/close.svg";
-	  closeImg.onclick = closeLightbox;
-	  closeImg.alt = "Fermer";
-
-	  mediaImg.src = `assets/photographers/medias/${photographerFirstName}/${currentMedia.image}`;
-	  mediaVideo.src = `assets/photographers/medias/${photographerFirstName}/${currentMedia.video}`;
-  
-	  chevronLeft.appendChild(iconeLeft);
-	  chevronRight.appendChild(iconeRight);
-	  close.appendChild(closeImg);
-	  lightbox.appendChild(chevronLeft);
-	  lightbox.appendChild(close);
-	  lightbox.appendChild(detailMedia);
-	  lightbox.appendChild(chevronRight);
-	  lightbox.appendChild(mediaTitle);
-	  detailMedia.appendChild(mediaImg);
-	  detailMedia.appendChild(mediaVideo);
-	  // chevronLeft.onclick = previousMedia;
-	  // chevronRight.onclick = nextMedia;
-  
-	  return lightbox;
-	}
-	return { getLightboxDOM };
-  }
   

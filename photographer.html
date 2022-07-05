@@ -25,44 +25,48 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
+          <span class="modal_name"></span>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div class="div_form">
             <label id="first">Prénom</label>
-            <input type="search" id="first" name="first"/>
+            <input type="search" name="first"/>
 
             <label id="last">Nom</label>
-            <input type="search" id="last" name="last"/>
+            <input type="search" name="last"/>
 
             <label id="email">Email</label>
-            <input type="email" id="email" name="email"/>
+            <input type="email"  name="email"/>
 
-            <label id="user-text">Votre message</label>
-            <input type="search" id="user-text" name="user-text"/>
+            <label>Votre message</label>
+            <input type="search" class="user-text" name="user-text"/>
 
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" onclick="closeModal()">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <section id="lightbox" class="lightbox_media">
-    </section>
-    <!-- <div id="lightbox">
-      <img src="assets/icons/close.svg" onclick="closeLightbox()" />
+    <!-- <section id="lightbox" class="lightbox_media">
+    </section> -->
+    <div id="lightbox">
+      <!-- <img class="close_img" src="assets/icons/close.svg" onclick="closeLightbox()" /> -->
       <div class="chevron_left">
         <i class="fas fa-chevron-left chevron"></i>
       </div>
       <div class="chevron_right">
         <i class="fas fa-chevron-right chevron"></i>
     </div>
+    <div class="close_lightbox">
+      <i class="fas fa-times close" onclick="closeLightbox()"></i>
+    </div>
    
-     <div class="lightbox_content">
+     <div id="lightbox_content" class="lightbox_content">
       <img src="" alt="" class="lightbox_img">
       <video src="" class="lightbox_video"></video>
      </div>
-    </div> -->
-   <script src="./scripts/factories/test.js"></script>
+    </div>
+    <script src="./scripts/utils/lightbox.js"></script>
     <script src="./scripts/factories/media.js"></script>
     <script src="./scripts/utils/api.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
