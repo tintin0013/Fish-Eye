@@ -6,14 +6,34 @@ function displayLightbox(media, type, medias, photographerFirstName) {
   const lightboxContent = document.getElementById("lightbox_content");
   const currentImage = lightboxContent.querySelector("img");
   const currentVideo = lightboxContent.querySelector("video");
+  let currentMediaName = document.getElementById("current_media_name");
+  const mediaName = document.createElement("p");
+  mediaName.className = "media_name";
+    mediaName.innerHTML = "";
+
+
+//   currentMediaName.innerHTML = "";
+  console.log(media.title)
+  lightbox.appendChild(currentMediaName);
+  currentMediaName.appendChild(mediaName);
+
+ 
   if (type === "image") {
     let url = urlMediaPrefix + media.image;
     currentImage.src = url;
-  } else {
+    currentImage.alt = `Image de ${media.title}`;
+    console.log(media.title)
+    mediaName.innerHTML = media.title;
+  }
+  
+  else {
     let url = urlMediaPrefix + media.video;
     currentVideo.src = url;
+    currentVideo.alt = `Video de ${media.title}`;
+    mediaName.innerHTML = media.title;
   }
   lightbox.style.display = "block";
+
   let left = document.querySelector(".chevron_left");
   left.addEventListener("click", () => {
     console.log("clic gauche");
@@ -21,10 +41,15 @@ function displayLightbox(media, type, medias, photographerFirstName) {
     newMedia = medias[mediaPosition];
     if (newMedia.image !== undefined) {
       currentImage.src = urlMediaPrefix + newMedia.image;
+        currentImage.alt = `Image de ${newMedia.title}`;
+        mediaName.innerHTML = newMedia.title;
     } else {
       currentVideo.src = urlMediaPrefix + newMedia.video;
+        currentVideo.alt = `Video de ${newMedia.title}`;
+        mediaName.innerHTML = newMedia.title;
     }
   });
+
   let right = document.querySelector(".chevron_right");
   right.addEventListener("click", () => {
     console.log("clic droit");
@@ -32,8 +57,12 @@ function displayLightbox(media, type, medias, photographerFirstName) {
     newMedia = medias[mediaPosition];
     if (newMedia.image !== undefined) {
       currentImage.src = urlMediaPrefix + newMedia.image;
+        currentImage.alt = `Image de ${newMedia.title}`;
+        mediaName.innerHTML = newMedia.title;
     } else {
       currentVideo.src = urlMediaPrefix + newMedia.video;
+        currentVideo.alt = `Video de ${newMedia.title}`;
+        mediaName.innerHTML = newMedia.title;
     }
   });
 }
@@ -58,6 +87,10 @@ function findMediaIndexInMedias(media, medias) {
 
 function closeLightbox() {
   const lightbox = document.getElementById("lightbox");
+  const lightboxContent = document.getElementById("lightbox_content");
+
+  const pNameMedia = document.querySelector(".media_name");
+    document.querySelector(".current_media_name").removeChild(pNameMedia);
   lightbox.style.display = "none";
 }
 

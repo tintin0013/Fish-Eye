@@ -289,4 +289,25 @@ video.lightbox_video{
     height: 100%;
 }
 
+.total_likes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 12rem;
+
+}
+.media_name {
+    
+    bottom: 30px;
+    left: 122px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #901C1C;
+    margin: 0;
+}
+
 
