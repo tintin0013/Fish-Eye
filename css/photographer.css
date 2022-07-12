@@ -197,7 +197,7 @@ form input {
 .likes_titles{
     padding: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     height: auto;
 }
@@ -214,9 +214,7 @@ p.media_title {
 }
 
 p.media_likes {
-    padding-right: 0;
-    padding-left: 0;
-    color: #901C1C;
+   padding-right: 10px;
 }
 
 #lightbox {
@@ -233,18 +231,17 @@ p.media_likes {
 
 .close{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 6rem;
+    right: 5rem;
     color: #901C1C;
    z-index: 1;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 
 .lightbox_content {
   background-color: #FAFAFA;
-  border: solid 1px #901C1C;
     width: 80%;
     height: 80%;
     position: absolute;
@@ -253,7 +250,6 @@ p.media_likes {
 }
 
 .lightbox_detail {
-    border: solid 1px #901C1C;
     width: 90%;
     height: 90%;
     position: absolute;
@@ -264,13 +260,16 @@ p.media_likes {
 #lightbox .chevron_left {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 5rem;
+    cursor: pointer;
+  
 }
 
 #lightbox .chevron_right {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    right: 10px;
+    right: 5rem;
+    cursor: pointer;
 }
 
 .chevron {
@@ -282,6 +281,7 @@ p.media_likes {
 img.lightbox_img{
     width: 100%;
     height: 100%;
+    object-fit: scale-down;
 }
 
 video.lightbox_video{
@@ -301,13 +301,46 @@ video.lightbox_video{
 
 }
 .media_name {
-    
+    position: fixed;
     bottom: 30px;
     left: 122px;
     font-size: 2rem;
     font-weight: bold;
     color: #901C1C;
     margin: 0;
+}
+
+#div_filtre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+#div_filtre .menu_filtre {
+    padding-right: 25px;
+}
+
+#media_filtre {
+    background-color: #901C1C;
+    color: white;
+    padding: 10px;
+}
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.heart_span {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+   
+    color: #901C1C;
 }
 
 

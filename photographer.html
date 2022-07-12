@@ -17,6 +17,16 @@
         <div class="photographer_info">
         </div>
       </div>
+      <div id="div_filtre">
+        <p class="menu_filtre">Trier par</p>
+        <label>
+          <select name="filtre" id="media_filtre">
+            <option value="popularite" >Popularité</option>
+            <option value="date" >Date</option>
+            <option value="titre" >Titre</option>
+          </select>
+        </label>
+      </div>
       <div class="photographer_media">
 
       </div>
@@ -31,19 +41,19 @@
 				<form>
 					<div class="div_form">
             <label id="first">Prénom</label>
-            <input type="search" name="first"/>
+            <input class="modal_first_name" type="search" name="first"/>
 
             <label id="last">Nom</label>
-            <input type="search" name="last"/>
+            <input class="modal_last_name" type="search" name="last"/>
 
             <label id="email">Email</label>
-            <input type="email"  name="email"/>
+            <input class="modal_email" type="email"  name="email"/>
 
             <label>Votre message</label>
-            <input type="search" class="user-text" name="user-text"/>
+            <input class="modal_message" type="search" name="user-text"/>
 
           </div>
-          <button class="contact_button" onclick="closeModal()">Envoyer</button>
+          <button class="contact_button" onclick="submitModal()">Envoyer</button>
 				</form>
 			</div>
 		</div>
@@ -63,7 +73,7 @@
    
      <div id="lightbox_content" class="lightbox_content">
       <img src="" alt="" class="lightbox_img">
-      <video src="" class="lightbox_video"></video>
+      <video src="" class="lightbox_video" autoplay></video>
       <span id="current_media_name" class="current_media_name"></span>
      </div>
     </div>
@@ -74,3 +84,5 @@
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
+
+

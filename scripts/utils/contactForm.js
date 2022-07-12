@@ -17,8 +17,22 @@ function closeModal() {
 //     const nameModal = document.querySelector(".modal_name");
 // modal.setAttribute("modal_name", "");
     modal.style.display = "none";
+}
 
-
-    
+function submitModal() {
+    const modal = document.getElementById("contact_modal");
+    const firstNameModal = document.querySelector(".modal_first_name");
+    const lastNameModal = document.querySelector(".modal_last_name");
+    const emailModal = document.querySelector(".modal_email");
+    const messageModal = document.querySelector(".modal_message");
+    const firstName = firstNameModal.value;
+    const lastName = lastNameModal.value;
+    const email = emailModal.value;
+    const message = messageModal.value;
+    console.log("firstName", firstName);
+    console.log("lastName", lastName);
+    console.log("email", email);
+    console.log("message", message);
+    modal.style.display = "none";
 }
 
