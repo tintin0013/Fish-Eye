@@ -1,88 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/edabc93252.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" alt="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <div class="photographer_info">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/edabc93252.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <img src="assets/images/logo.png" class="logo" alt="logo" />
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <div class="photographer_info">
+      </div>
+    </div>
+    <div id="div_filtre">
+      <p class="menu_filtre">Trier par</p>
+      <label>
+        <select name="filtre" id="media_filtre">
+          <option value="popularite">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+      </label>
+    </div>
+    <section class="photographer_media">
+      <div class="media_container"></div>
+    </section>
+  </main>
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <span class="modal_name"></span>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form class="form">
+        <div class="div_form">
+          <label id="first">Prénom</label>
+          <input class="modal_first_name" type="search" name="first" />
+
+          <label id="last">Nom</label>
+          <input class="modal_last_name" type="search" name="last" />
+
+          <label id="email">Email</label>
+          <input class="modal_email" type="email" name="email" />
+
+          <label>Votre message</label>
+          <input class="modal_message" type="search" name="user-text" />
+
         </div>
-      </div>
-      <div id="div_filtre">
-        <p class="menu_filtre">Trier par</p>
-        <label>
-          <select name="filtre" id="media_filtre">
-            <option value="popularite" >Popularité</option>
-            <option value="date" >Date</option>
-            <option value="titre" >Titre</option>
-          </select>
-        </label>
-      </div>
-      <div class="photographer_media">
-
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <span class="modal_name"></span>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div class="div_form">
-            <label id="first">Prénom</label>
-            <input class="modal_first_name" type="search" name="first"/>
-
-            <label id="last">Nom</label>
-            <input class="modal_last_name" type="search" name="last"/>
-
-            <label id="email">Email</label>
-            <input class="modal_email" type="email"  name="email"/>
-
-            <label>Votre message</label>
-            <input class="modal_message" type="search" name="user-text"/>
-
-          </div>
-          <button class="contact_button" onclick="submitModal()">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <!-- <section id="lightbox" class="lightbox_media">
-    </section> -->
-    <div id="lightbox">
-      <!-- <img class="close_img" src="assets/icons/close.svg" onclick="closeLightbox()" /> -->
-      <div class="chevron_left">
-        <i class="fas fa-chevron-left chevron"></i>
-      </div>
-      <div class="chevron_right">
-        <i class="fas fa-chevron-right chevron"></i>
+        <div class="contact_button" onclick="submitModal()"><span>Envoyer</span> </div>
+      </form>
+    </div>
+  </div>
+  <div id="lightbox">
+    <div class="chevron_left">
+      <i class="fas fa-chevron-left chevron"></i>
+    </div>
+    <div class="chevron_right">
+      <i class="fas fa-chevron-right chevron"></i>
     </div>
     <div class="close_lightbox">
       <i class="fas fa-times close" onclick="closeLightbox()"></i>
     </div>
-   
-     <div id="lightbox_content" class="lightbox_content">
+
+    <div id="lightbox_content" class="lightbox_content">
       <img src="" alt="" class="lightbox_img">
       <video src="" class="lightbox_video" autoplay></video>
       <span id="current_media_name" class="current_media_name"></span>
-     </div>
     </div>
-    <script src="./scripts/utils/lightbox.js"></script>
-    <script src="./scripts/factories/media.js"></script>
-    <script src="./scripts/utils/api.js"></script>
-    <script src="./scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+  </div>
+  <script src="./scripts/utils/lightbox.js"></script>
+  <script src="./scripts/factories/media.js"></script>
+  <script src="./scripts/utils/api.js"></script>
+  <script src="./scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+</body>
+
 </html>
-
-
