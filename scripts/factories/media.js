@@ -93,6 +93,7 @@ function mediaFactory(media, photographer, medias) {
     const detailArticle = document.createElement("div");
     const imgVideo = document.createElement("article");
     detailArticle.className = "media_detail";
+    imgVideo.setAttribute("tabIndex" , "0");
 
     // si l'image est définie
     if (image !== undefined) { 
@@ -147,7 +148,7 @@ function mediaFactory(media, photographer, medias) {
 
     // ecouteur d'évènement clavier sur l'image ou la vidéo 
     imgVideo.addEventListener("keypress", (event) => {
-      if (event.key === "Enter") {
+      if (event.keyCode === 13) {
         displayLightbox(
           media,
           event.target.dataset.typemedia,

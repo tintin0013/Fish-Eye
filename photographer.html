@@ -33,12 +33,12 @@
       <div class="media_container"></div>
     </section>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal"  role="dialog">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
         <span class="modal_name"></span>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" alt="fermeture modal" onclick="closeModal()" />
       </header>
       <form class="form">
         <div class="div_form">
@@ -55,7 +55,7 @@
           <input class="modal_message" type="search" name="user-text" />
 
         </div>
-        <div class="contact_button" onclick="submitModal()"><span>Envoyer</span> </div>
+        <div class="contact_button"  onclick="submitModal()"><span>Envoyer</span> </div>
       </form>
     </div>
   </div>
