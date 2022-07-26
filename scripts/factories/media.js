@@ -1,26 +1,28 @@
 //Affiche les informations du photographe
+function infoFactory(data) {
+  const { name, id, city, country, tagline, price, portrait } = data; // récupération des données du photographe
+  const picture = `assets/photographers/portrait/${portrait}`; // récupération de l'image du photographe
 
-function infoFactory(data) {  
-  const { name, id, city, country, tagline, price, portrait } = data;
-  const picture = `assets/photographers/portrait/${portrait}`;
-
-  function getPhotographerCardDOM() {  
-    const article = document.createElement("article");
-    const presentation = document.createElement("div");
-    const btnForm = document.createElement("button");
-    const h1 = document.createElement("h1");
-    const pays = document.createElement("p");
-    const tag = document.createElement("p");
-    const img = document.createElement("img");
+  function getPhotographerCardDOM() {
+    // création de la carte des informations du photographe
+    const article = document.createElement("article"); // création de l'article
+    const presentation = document.createElement("div"); // création de la div de présentation
+    const btnForm = document.createElement("button"); // création du bouton de formulaire
+    const h1 = document.createElement("h1"); // création du nom du photographe
+    const pays = document.createElement("p"); // création du pays et de la ville
+    const tag = document.createElement("p"); // création du tagline (description)
+    const img = document.createElement("img"); // création de l'image du photographe
 
     //Affiche le formulaire de contact
-    btnForm.addEventListener("click", () => {  
+    btnForm.addEventListener("click", () => {
+      //Affiche le formulaire de contact
       displayModal(name);
     });
-    img.src = picture;
-    img.alt = `Aperçu profil de ${name}`;
+    img.src = picture; // affiche la photo du photographe
+    img.alt = `Aperçu profil de ${name}`; // alt de l'image
 
-    presentation.className = "presentation_photograph"; 
+    // ajout des class
+    presentation.className = "presentation_photograph";
     article.className = "presentation_card";
     h1.className = "presentation_name";
     btnForm.className = "contact_button";
@@ -28,34 +30,37 @@ function infoFactory(data) {
     tag.className = "presentation_description";
     img.className = "presentation_photo";
 
-    h1.textContent = name;
-    btnForm.innerText = "Contactez-moi";
-    pays.innerHTML = country + ", " + city;
-    tag.innerHTML = tagline;
+    h1.textContent = name; // insertion du nom du photographe
+    btnForm.innerText = "Contactez-moi"; // insertion du texte du bouton
+    pays.innerHTML = country + ", " + city; // insertion de la ville et du pays
+    tag.innerHTML = tagline; // insertion de la tagline
 
-    presentation.appendChild(h1);
-    presentation.appendChild(pays);
-    presentation.appendChild(tag);
-    article.appendChild(presentation);
-    article.appendChild(btnForm);
-    article.appendChild(img);
+    presentation.appendChild(h1); // nom du photographe
+    presentation.appendChild(pays); // pays et ville
+    presentation.appendChild(tag); // tagline
+    article.appendChild(presentation); // div presentation
+    article.appendChild(btnForm); // bouton contact
+    article.appendChild(img); // photo du photographe
 
-    const totalLikesDiv = document.createElement("div");
-    const totalLikes = document.createElement("p");
-    const totalLikesHeart = document.createElement("i");
-    const totalLikesPrice = document.createElement("p");
+    const totalLikesDiv = document.createElement("div"); // creation de la div pour afficher le nombre de likes
+    const totalLikes = document.createElement("p"); // creation du p pour afficher le nombre de likes
+    const totalLikesHeart = document.createElement("i"); // creation de l'icone pour afficher le nombre de likes
+    const totalLikesPrice = document.createElement("p"); // creation du p pour afficher le prix du photographe
 
+    // ajout des class
     totalLikesDiv.className = "total_likes";
     totalLikes.className = "total_likes_number";
     totalLikesHeart.className = "fa-solid fa-heart";
     totalLikesPrice.className = "total_likes_price";
     totalLikesPrice.innerHTML = price + " €/jour";
-    totalLikesDiv.appendChild(totalLikes);
-    totalLikesDiv.appendChild(totalLikesHeart);
-    totalLikesDiv.appendChild(totalLikesPrice);
-    presentation.appendChild(totalLikesDiv);
-    return article;
+
+    totalLikesDiv.appendChild(totalLikes); // nombre de likes
+    totalLikesDiv.appendChild(totalLikesHeart); // icone heart
+    totalLikesDiv.appendChild(totalLikesPrice); // prix par jour
+    presentation.appendChild(totalLikesDiv); // div total likes
+    return article; // retourne l'article
   }
+  //Retourne les informations du photographe
   return {
     name,
     picture,
@@ -65,77 +70,81 @@ function infoFactory(data) {
     tagline,
     price,
 
-    getPhotographerCardDOM,
+    getPhotographerCardDOM, // retourne la fonction getPhotographerCardDOM
   };
 }
 // affiche les medias du photographe
-function mediaFactory(media, photographer, medias) {  
-  const { date, id, photographerId, image, video, likes, title } = media;
-  const photographerName = photographer.name;
+function mediaFactory(media, photographer, medias) {
+  const { id, image, video, likes, title } = media; // récupération des données du media
+  const photographerName = photographer.name; // récupération du nom du photographe
 
+  // création de la carte des medias
   function getMediaCardDOM() {
-    const api = new apiUser("./data/photographers.json");
-    const likesAndTitles = document.createElement("div");
-    const likesHeartSpan = document.createElement("span");
-    const mediaTitle = document.createElement("p");
-    const mediaLikes = document.createElement("p");
-    let likesHeart = document.createElement("i");
+    const likesAndTitles = document.createElement("div"); // création de la div pour afficher le nombre de likes et le titre
+    const likesHeartSpan = document.createElement("span"); // création du span pour afficher le nombre de likes
+    const mediaTitle = document.createElement("p"); // création du p pour afficher le titre
+    const mediaLikes = document.createElement("p"); // création du p pour afficher le nombre de likes
+    let likesHeart = document.createElement("i"); // création de l'icone pour afficher le nombre de likes
 
+    // ajout des class
     likesAndTitles.className = "likes_titles";
     likesHeartSpan.className = "heart_span";
     mediaTitle.className = "media_title";
     mediaLikes.className = "media_likes number";
     likesHeart.className = "fa-regular fa-heart icon_heart heart ";
 
-    likesHeartSpan.appendChild(likesHeart);
-    mediaLikes.setAttribute("data-likes-media", likes);
+    likesHeartSpan.appendChild(likesHeart); // icone heart
+    mediaLikes.setAttribute("data-likes-media", likes); //  nombre de likes
 
-    const detailArticle = document.createElement("div");
-    const imgVideo = document.createElement("article");
-    detailArticle.className = "media_detail";
-    imgVideo.setAttribute("tabIndex" , "0");
+    const detailArticle = document.createElement("div"); // création de la div pour afficher les détails du media
+    const imgVideo = document.createElement("article"); // création de l'article pour afficher l'image ou la video
+    detailArticle.className = "media_detail"; // ajout de la class media_detail
+    imgVideo.setAttribute("tabIndex", "0"); // ajout de l'attribut tabIndex
 
     // si l'image est définie
-    if (image !== undefined) { 
-      const img = document.createElement("img");
-      img.className = "media_galerie";
-      let urlMedia = `assets/photographers/medias/${photographerName}/${image}`;
-      img.src = urlMedia;
-      img.setAttribute("data-typemedia", "image");
-      img.alt = `Image de ${title}`;
-      mediaTitle.innerHTML = title;
-      mediaLikes.innerHTML = likes;
-      mediaLikes.setAttribute("data-likes-id", likes);
-      likesHeartSpan.appendChild(mediaLikes);
-      likesAndTitles.appendChild(likesHeartSpan);
-      likesAndTitles.appendChild(mediaTitle);
-      imgVideo.appendChild(img);
-      detailArticle.appendChild(imgVideo);
-      detailArticle.appendChild(likesAndTitles);
+    if (image !== undefined) {
+      // condition si l'image est définie
+      const img = document.createElement("img"); // création de l'image
+      img.className = "media_galerie"; // ajout de la class media_galerie
+      let urlMedia = `assets/photographers/medias/${photographerName}/${image}`; // récupération de l'url de l'image
+      img.src = urlMedia; // ajout de l'url de l'image
+      img.setAttribute("data-typemedia", "image"); // ajout de l'attribut data-typemedia
+      img.alt = `Image de ${title}`; // ajout de l'alt de l'image
+      mediaTitle.innerHTML = title; // ajout du titre du media
+      mediaLikes.innerHTML = likes; // ajout du nombre de likes du media
+      mediaLikes.setAttribute("data-likes-id", likes); // ajout de l'attribut data-likes-id
+      likesHeartSpan.appendChild(mediaLikes); // nombre de likes du media
+      likesAndTitles.appendChild(likesHeartSpan); // nombre de likes
+      likesAndTitles.appendChild(mediaTitle); // titre du media
+      imgVideo.appendChild(img); // ajout de l'image a l'article
+      detailArticle.appendChild(imgVideo); // ajout de l'article a la div detailArticle
+      detailArticle.appendChild(likesAndTitles); // ajout de la div likesAndTitles a la div detailArticle
     }
     // si la vidéo est définie
-     else { 
-      const movie = document.createElement("video");
-      movie.className = "media_galerie";
-      let urlMediaVideo = `assets/photographers/medias/${photographerName}/${video}`;
-      movie.src = urlMediaVideo;
-      movie.setAttribute("data-typemedia", "video");
-      movie.alt = `Video de ${title}`;
-      movie.controls = true;
-      mediaTitle.innerHTML = title;
-      mediaLikes.innerHTML = likes;
-      mediaLikes.setAttribute("data-likes-id", likes);
-      likesHeartSpan.appendChild(mediaLikes);
-      likesAndTitles.appendChild(likesHeartSpan);
-      likesAndTitles.appendChild(mediaTitle);
-      imgVideo.appendChild(movie);
-      detailArticle.appendChild(imgVideo);
-      detailArticle.appendChild(likesAndTitles);
+    else {
+      // condition si la vidéo est définie
+      const movie = document.createElement("video"); // création de la video
+      movie.className = "media_galerie"; // ajout de la class media_galerie
+      let urlMediaVideo = `assets/photographers/medias/${photographerName}/${video}`; // récupération de l'url de la vidéo
+      movie.src = urlMediaVideo; // ajout de l'url de la vidéo
+      movie.setAttribute("data-typemedia", "video"); // ajout de l'attribut data-typemedia
+      movie.alt = `Video de ${title}`; // ajout de l'alt de la vidéo
+      movie.controls = true; // ajout du contrôle de la vidéo
+      mediaTitle.innerHTML = title; // ajout du titre du media
+      mediaLikes.innerHTML = likes; // ajout du nombre de likes du media
+      mediaLikes.setAttribute("data-likes-id", likes); // ajout de l'attribut data-likes-id
+      likesHeartSpan.appendChild(mediaLikes); // nombre de likes du media
+      likesAndTitles.appendChild(likesHeartSpan); // nombre de likes
+      likesAndTitles.appendChild(mediaTitle); // titre du media
+      imgVideo.appendChild(movie); // ajout de la video a l'article
+      detailArticle.appendChild(imgVideo); // ajout de l'article a la div detailArticle
+      detailArticle.appendChild(likesAndTitles); // ajout de la div likesAndTitles a la div detailArticle
     }
 
     // ecouteur d'évènement sur l'image ou la vidéo
-    imgVideo.addEventListener("click", (event) => {  
+    imgVideo.addEventListener("click", (event) => {
       displayLightbox(
+        // appel de la fonction displayLightbox pour afficher la lightbox
         media,
         event.target.dataset.typemedia,
         photographerName,
@@ -146,10 +155,12 @@ function mediaFactory(media, photographer, medias) {
       );
     });
 
-    // ecouteur d'évènement clavier sur l'image ou la vidéo 
+    // ecouteur d'évènement clavier sur l'image ou la vidéo
     imgVideo.addEventListener("keypress", (event) => {
       if (event.keyCode === 13) {
+        // condition si la touche entrée est pressée
         displayLightbox(
+          // appel de la fonction displayLightbox pour afficher la lightbox
           media,
           event.target.dataset.typemedia,
           photographerName,
@@ -160,9 +171,9 @@ function mediaFactory(media, photographer, medias) {
         );
       }
     });
-    detailArticle.setAttribute("data-id", id);
+    detailArticle.setAttribute("data-id", id); // ajout de l'attribut data-id
 
-    return detailArticle;
+    return detailArticle; // retour de la div detailArticle
   }
-  return { getMediaCardDOM };
+  return { getMediaCardDOM }; // retour de la fonction getMediaCardDOM
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -11,14 +11,17 @@
 </head>
 
 <body>
+  <!-- Header -->
   <header>
     <img src="assets/images/logo.png" class="logo" alt="logo" />
   </header>
   <main id="main">
+    <!-- section photographer -->
     <div class="photograph-header">
       <div class="photographer_info">
       </div>
     </div>
+    <!-- section filtre -->
     <div id="div_filtre">
       <p class="menu_filtre">Trier par</p>
       <label>
@@ -29,17 +32,20 @@
         </select>
       </label>
     </div>
-    <section class="photographer_media">
+    <!-- section media -->
+    <div class="photographer_media">
       <div class="media_container"></div>
-    </section>
+    </div>
   </main>
-  <div id="contact_modal"  role="dialog">
+  <!-- section modal-->
+  <div id="contact_modal" role="dialog">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
         <span class="modal_name"></span>
         <img src="assets/icons/close.svg" alt="fermeture modal" onclick="closeModal()" />
       </header>
+
       <form class="form">
         <div class="div_form">
           <label id="first">Prénom</label>
@@ -55,10 +61,11 @@
           <input class="modal_message" type="search" name="user-text" />
 
         </div>
-        <div class="contact_button"  onclick="submitModal()"><span>Envoyer</span> </div>
+        <div class="contact_button" onclick="submitModal()"><span>Envoyer</span> </div>
       </form>
     </div>
   </div>
+  <!-- section lightbox-->
   <div id="lightbox">
     <div class="chevron_left">
       <i class="fas fa-chevron-left chevron"></i>
@@ -69,9 +76,8 @@
     <div class="close_lightbox">
       <i class="fas fa-times close" onclick="closeLightbox()"></i>
     </div>
-
     <div id="lightbox_content" class="lightbox_content">
-      <img src="" alt="" class="lightbox_img">
+      <img src="https://via.placeholder.com/468x60?text=Notre+image+par+default" alt="notre image par default" class="lightbox_img">
       <video src="" class="lightbox_video" autoplay></video>
       <span id="current_media_name" class="current_media_name"></span>
     </div>
