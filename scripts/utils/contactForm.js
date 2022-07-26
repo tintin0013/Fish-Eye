@@ -7,7 +7,13 @@ function displayModal(name) {
   currentName.innerHTML = name; // ajout du nom du photographe dans le p
   nameModal.appendChild(currentName); // ajout du p dans le nom de la modal
   form.style.display = "block"; // affiche la modal
+  window.addEventListener("keydown", (e) => { // ajoute un évènement sur la touche "Echap"
+    if (e.key === "Escape") { // si la touche "Echap" est appuyée
+      closeModal(); // ferme la modal
+    }
+  }); 
 }
+
 
 // ferme la modal
 function closeModal() {

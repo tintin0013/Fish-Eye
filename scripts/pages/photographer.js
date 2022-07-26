@@ -88,6 +88,7 @@ class PhotographerInfo {
     });
   }
 
+
   //filtre les medias
   filterMedia(type) {
     switch (
@@ -145,6 +146,8 @@ class PhotographerInfo {
       this.filterMedia(e.target.value); //appel de la fonction qui filtre les medias selon le filtre sélectionné
     });
   }
+
+  
 }
 const photographerSections = new PhotographerInfo();
 photographerSections.menu();

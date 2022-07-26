@@ -18,6 +18,7 @@ function infoFactory(data) {
       //Affiche le formulaire de contact
       displayModal(name);
     });
+
     img.src = picture; // affiche la photo du photographe
     img.alt = `Aperçu profil de ${name}`; // alt de l'image
 
@@ -58,6 +59,8 @@ function infoFactory(data) {
     totalLikesDiv.appendChild(totalLikesHeart); // icone heart
     totalLikesDiv.appendChild(totalLikesPrice); // prix par jour
     presentation.appendChild(totalLikesDiv); // div total likes
+
+
     return article; // retourne l'article
   }
   //Retourne les informations du photographe
@@ -73,6 +76,8 @@ function infoFactory(data) {
     getPhotographerCardDOM, // retourne la fonction getPhotographerCardDOM
   };
 }
+
+
 // affiche les medias du photographe
 function mediaFactory(media, photographer, medias) {
   const { id, image, video, likes, title } = media; // récupération des données du media

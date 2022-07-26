@@ -30,7 +30,7 @@ function photographerFactory(data) {
     h2.textContent = name; // ajout du texte du titre
     pays.innerHTML = country + ", " + city; // ajout du texte du pays et de la ville
     tag.innerHTML = tagline; // ajout du texte du tagline
-    prix.innerHTML = price + "€/par heure"; // ajout du texte du prix du photographe
+    prix.innerHTML = price + "€/par jour"; // ajout du texte du prix du photographe
 
     link.appendChild(img); // ajout de l'image dans le lien
     link.appendChild(h2); // ajout du titre dans le lien
